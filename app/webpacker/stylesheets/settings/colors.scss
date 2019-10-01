@@ -1,0 +1,17 @@
+$background-grey: #FAFAFA;
+$font-color: #444;
+
+$brand-colors: (
+  blue: #2586d4, 
+  ebony: #4b5e63,
+  green: #278753,
+  grey: #969490,
+  peach: #f6b98f,
+  purple: #A05ACC,
+  red: #f1564e,
+  yellow: #fcb643,
+);
+
+@function brand-color($color-name) {
+  @return map-get($brand-colors, $color-name);
+}

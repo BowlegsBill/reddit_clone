@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Myapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://kit.fontawesome.com/136822d4a7.js" crossorigin="anonymous"></script>
+  </head>
+
+  <body>
+
+    <header class="main-header">
+      <div class="main-header__navigation-wrap">
+        <div>
+          <%= link_to 'Home', root_path %>
+        </div>
+        <div>
+          <% if user_signed_in? %>
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'Sign In', new_user_session_path %>
+          <% end %>
+        </div>
+      </div>
+    </header>
+
+    <div class="content-wrap">
+      <div class="body-content">
+          <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

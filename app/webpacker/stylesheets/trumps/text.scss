@@ -1,0 +1,5 @@
+@each $colorname, $color in $brand-colors {
+  .text-#{$colorname} {
+    color: $color;
+  }
+}

@@ -1,0 +1,30 @@
+.post {
+  background: white;
+  box-shadow: 2px 2px 21px 0px rgba(117,117,117,1);
+  margin-bottom: 30px;
+
+  a {
+    text-decoration: none;
+    color: $font-color; 
+  }
+}
+
+.post__header {
+  padding: 10px 15px;
+  border-bottom: 1px solid grey;
+}
+
+.post__body {
+  padding: 15px;
+  p {
+    margin: 0;
+  }
+}
+
+.post__title {
+  margin: 0;
+}
+
+.post__footer {
+  padding: 0 15px 10px;
+}

@@ -1,0 +1,11 @@
+.main-header {
+  background: white;
+  padding: 20px 40px;
+}
+
+.main-header__navigation-wrap {
+  display: flex;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 0 auto;
+}

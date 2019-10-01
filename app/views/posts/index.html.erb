@@ -1,0 +1,25 @@
+<% if user_signed_in? %>
+  <%= link_to('Create New Post', new_post_path, class: 'button') %>
+<% else %>
+  <p>You need to <%= link_to 'sign in', new_user_session_path, class: 'text-blue' %> to create a post</p>
+<% end %>
+
+<% @posts.each do |post| %>
+
+  <div class="post">
+
+      <%= link_to post_path(post) do %>
+
+        <header class="post__header">
+            <h3 class="post__title"><%= post.title %></h3>
+        </header>
+
+        <div class="post__body">
+            <p><%= post.body %></p>
+        </div>
+        
+      <% end %>    
+
+  </div>
+
+<% end %>

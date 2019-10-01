@@ -1,0 +1,53 @@
+<%= link_to 'Back', posts_path, class: 'button' %>
+<% if user_signed_in? %>
+  <%= link_to 'Edit', edit_post_path(@post), class: 'button' %>
+<% end %>
+
+<div class="post">
+  <header class="post__header">
+    <h1 class="post__title"><%= @post.title %></h1>
+  </header>
+  <div class="post__body">
+    <p><%= @post.body %></p>
+  </div>
+  <div class="post__footer">
+    <span class="js-post-up-vote" data-id="<%= @post.id %>"><i class="fas fa-2x fa-thumbs-up" style="cursor: pointer"></i></span> 
+    | 
+    <span class="js-post-down-vote" data-id="<%= @post.id %>"><i class="fas fa-2x fa-thumbs-down" style="cursor: pointer"></i></span>
+  </div>
+</div>
+
+<% @post.comments.each do |comment| %>
+  <% next unless comment.persisted? %>
+  <div class="comment">
+    <%= comment.body %>
+  </div>
+<% end %>
+
+<h2>Add a Comment</h2>
+
+<% if user_signed_in? %>
+  <%= form_with(model: @comment, url: post_comments_path(@post), local: true) do |form| %>
+    <% if @comment.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+          <ul>
+            <% @comment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    
+    <div>
+      <%= form.text_area :body, rows: 10 %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+<% else %>
+    <p>You must be <%= link_to 'signed in', new_user_session_path, class: 'text-blue' %> to leave a comment</p>
+<% end %>
